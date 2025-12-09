@@ -1,0 +1,51 @@
+html, body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+    
+}
+
+.display-2 {
+    padding-bottom: 1em;
+}
+
+form {}
+
+.container {
+    width: 17%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-evenly
+}
+
+.input-group {
+    width: 3ch;
+    height: 3ch;        
+    font-size: 1.8rem;
+}
+
+.btn.btn-secondary {
+    height: 100%;
+}
+
+.form-control {
+    text-align: center;
+    padding: 0;
+    box-sizing: border-box; 
+    font-size: 1.8rem;
+}
+
+img {
+    height: 47%; 
+    width: 30% 
+}
