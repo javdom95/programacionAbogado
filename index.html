@@ -11,14 +11,22 @@
     <div class="container-fluid">
         <h1 class="display-2">El Abogado</h1>
         <h2 class="display-2" id="fin"></h2>
-        <form onsubmit="comprobarInput(event)" id="entrada">
-            <div class="container">    
-                <div class="input-group input-group-lg">
-                    <input type="text" minlength="1" maxlength="1" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="letra">
+        <div id="entrada">
+            <form onsubmit="comprobarInput(event)">
+                <div class="container">    
+                    <div class="input-group input-group-lg">
+                        <input type="text" minlength="1" maxlength="1" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="letra">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Comprobar</button>
                 </div>
-                <button type="submit" class="btn btn-secondary">Comprobar</button>
+            </form>
+            <div id="letrasusadas">
+                <p>Letras usadas</p>
+                <p id="listaletras"></p>
             </div>
-        </form>
+        </div>
+
+        
         <img src="img/Hangman-0.png" id="imagen">
         <p id="p1"></p>
     </div>

@@ -5,6 +5,7 @@ let LetrasUsadas = []
 let fallos = 0
 let aciertos = 0
 let hangman = `\"../img/Hangman-${fallos}.png\"` //cambiar imagen
+let comenzado = false
 
 function leerListaPalabras(){
     fetch("../data/words.json")
@@ -36,21 +37,19 @@ function separarPalabra(palabra){
 function comprobarInput(e){
     e.preventDefault()
     let letraAcertada = false
-
+    
     //Coge el valor del input, lo vuelve mayúscula
     const letra = document.getElementById("letra").value.toUpperCase()
 
     //Si el valor se utilizó ya, omitir
     if (LetrasUsadas.includes(letra)) {
         document.getElementById("letra").value = ""
+        document.getElementById("letra").focus()
         return}
 
-    //Si se introduce un numero, no hace falta que se compruebe o que pierda vidas
-    else if (letra.match(/\d/)){letraAcertada = true}
-    else if (letra.match(" ")){
-        document.getElementById("letra").value = ""
-        return}
-    else{
+    //Si se introduce un numero, no hace falta que se compruebe o que pierda vidas// no necesario si se comprueba letras solo
+
+    else if (letra.match(/[a-zA-Z\u00d1]/)){
         for (let i = 0; i < palabra.length; i++) {
             if (palabra[i] == letra){
                 barras[i] = letra     //Si una letra coincide se actualiza la variable de barras
@@ -58,9 +57,18 @@ function comprobarInput(e){
                 aciertos++
             }
         }
+        
     }
-    
+    else {
+        document.getElementById("letra").value = ""
+        document.getElementById("letra").focus()
+        return
+    }
     //Perder vida si se falló
+        if (comenzado == false) {
+        document.getElementById("letrasusadas").style.visibility = "visible"; // Mostrar el contenedor
+        comenzado = true;
+    }
     if (letraAcertada == false) {
         fallos++
 
@@ -84,11 +92,14 @@ function comprobarInput(e){
         document.getElementById("fin").style.color = "green"
         document.getElementById("entrada").style.display = "none"
     }
-
+    document.getElementById("listaletras").innerText = LetrasUsadas.join(", ")
     document.getElementById("letra").value = ""
-    document.getElementById("letra").value.focus()
+    document.getElementById("letra").focus()
+
+
 }
 
 
 leerListaPalabras()
+document.getElementById("letra").focus()
 
